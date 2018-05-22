@@ -1,0 +1,19 @@
+
+
+# locations
+# xli6@durga:/users/xli6/scripts
+# local:/Users/xinli/Dropbox/scripts
+
+
+# remove accidentally pushed large files
+# git filter-branch --index-filter 'git rm --cached --ignore-unmatch pivus/gcta/nohup.out' -f
+
+git init
+git pull --all
+git add --all
+git commit -am "`date`"
+git remote add udn https://github.com/xinli-git/udn
+git push --set-upstream udn master
+
+
+
