@@ -1,4 +1,4 @@
-# udn
+# udn, river score summary
 
 
 ## 1.	Description of the RIVER model.
@@ -13,7 +13,8 @@ Rare variants are defined as those of minor allele frequency (MAF) < 0.01 in 100
 ## 4.	Feature selection.
 We used the following genomic annotations: Ensembl VEP, CADD, DANN, conservation score (Gerp, PhyloP, PhastCons), CpG, GC, chromHMM and Encode chromatin-openness track. We selected those features based on their prior evidence of association with regulatory effects (ref1). Features are aggregated over each gene and individual pair, using either max(), min() for quantitative features, or any() for categorical features. TSS distance is inverse-transformed first by taking 1/(1+TSS). Finally, all values are standardized by mean and variance to be used as predictors in the model. 
 
-## 5.	Expression outliers (the response variable) are defined as those with absolute Z-score > 2. Z-scores are calculated based on total gene expression level RPKM from RNA-seq. In addition, for GTEx training data, gene expression levels are corrected by PEER (ref2) to remove technical artifacts and major common-variant eQTL effects are also removed. Z-scores for GTEx are median over all available tissues (ref1). 
+## 5.	Expression outliers
+Outliers (the response variable) are defined as those with absolute Z-score > 2. Z-scores are calculated based on total gene expression level RPKM from RNA-seq. In addition, for GTEx training data, gene expression levels are corrected by PEER (ref2) to remove technical artifacts and major common-variant eQTL effects are also removed. Z-scores for GTEx are median over all available tissues (ref1). 
 
 Ref1: The impact of rare variation on gene expression across tissues. X Li, Y Kim, EK Tsang, JR Davis. Nature, 2017
 Ref2: Stegle, O., Parts, L., Piipari, M., Winn, J. & Durbin, R. Using probabilistic estimation of expression residuals (PEER) to obtain increased power and interpretability of gene expression analyses. Nat. Protoc. 7, 500–507 (2012).
