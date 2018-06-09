@@ -1,6 +1,6 @@
 # udn / variant filtering pipeline
 
-The variant QC generally follows the pipeline in [ref1](https://doi.org/10.1016/j.ajhg.2018.05.002) and [ref2](https://doi.org/10.1038/nature19057).
+The variant QC generally follows the guideline in [ref1](https://doi.org/10.1016/j.ajhg.2018.05.002) and [ref2](https://doi.org/10.1038/nature19057).
 
 ### variant based metrics:
 1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
