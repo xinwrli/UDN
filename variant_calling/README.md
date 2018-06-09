@@ -18,7 +18,7 @@ as in "hail" command
 
 VCF filters
 Filters | FORMAT/GT | FORMAT/DP | FORMAT/GQ | FORMAT/PL | FORMAT/AD
----|---|---|---
+---|---|---|---|---|---
 keep|=='0/0'|>20|>20|<20|AD[0]/DP > 0.8
 
 
