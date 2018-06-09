@@ -2,11 +2,13 @@
 
 The variant QC generally follows the pipeline in ref1 and ref2.
 
+### variant based metrics:
+1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
+2. 
 
-
-
-
-
+### site based metrics: 
+3. exclude variants with HWE p-value < 1e-6
+4. exclude varriants with call rate < 0.80 (missing > 20%)
 
 
 
