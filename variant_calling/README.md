@@ -1,4 +1,4 @@
-# udn, variant filtering pipeline
+# udn / variant filtering pipeline
 
 The variant QC generally follows the pipeline in ref1 and ref2.
 
