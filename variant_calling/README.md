@@ -4,7 +4,17 @@ The variant QC generally follows the pipeline in ref1 and ref2.
 
 ### variant based metrics:
 1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
-2. 
+2. exclude FORMAT/DP < 20
+
+
+Hail semantics:
+g.isHomRef, FORMAT/GT == '0/0'
+g.isHomVar, FORMAT/GT == '1/1'
+g.isHet, FORMAT/Gt == '0/1'
+g.ad, FORMAT/AD
+g.gq, FORMAT/GQ
+g.dp, FORMAT/DP
+g.pl, FORMAT/PL
 
 ### site based metrics: 
 3. exclude variants with HWE p-value < 1e-6
