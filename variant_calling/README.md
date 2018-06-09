@@ -16,21 +16,18 @@ as in "hail" command
          """, keep = False)
 ```         
 
-Hail semantics:
-g.isHomRef, FORMAT/GT == '0/0'
-g.isHomVar, FORMAT/GT == '1/1'
-g.isHet, FORMAT/Gt == '0/1'
-g.ad, FORMAT/AD
-g.gq, FORMAT/GQ
-g.dp, FORMAT/DP
-g.pl, FORMAT/PL
-
+Hail semantics in VCF fields:
+         g.isHomRef, FORMAT/GT == '0/0'
+         g.isHomVar, FORMAT/GT == '1/1'
+         g.isHet, FORMAT/Gt == '0/1'
+         g.ad, FORMAT/AD
+         g.gq, FORMAT/GQ
+         g.dp, FORMAT/DP
+         g.pl, FORMAT/PL
 
 ### site based metrics: 
 3. exclude variants with HWE p-value < 1e-6
 4. exclude varriants with call rate < 0.80 (missing > 20%)
-
-
 
 [ref1] Ganna, A., Satterstrom, F. K., Zekavat, S. M., Das, I., Kurki, M. I., Churchhouse, C., … Neale, B. M. (2018). Quantifying the Impact of Rare and Ultra-rare Coding Variation across the Phenotypic Spectrum. American Journal of Human Genetics, 102(6), 1204–1211. https://doi.org/10.1016/j.ajhg.2018.05.002 https://github.com/andgan/ultra_rare_pheno_spectrum
 
