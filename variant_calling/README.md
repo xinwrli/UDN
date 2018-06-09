@@ -7,12 +7,14 @@ The variant QC generally follows the pipeline in ref1 and ref2.
 2. exclude FORMAT/DP < 20
 as in "hail" command
 
-```.filter_genotypes(
+```
+.filter_genotypes(
          """
          (g.isHomRef && (g.ad[0] / g.dp < 0.8 || g.gq < 20 || g.dp < 20)) ||
          (g.isHomVar && (g.ad[1] / g.dp < 0.8 || g.pl[0] < 20 || g.dp < 20)) ||
          (g.isHet && ( (g.ad[0] + g.ad[1]) / g.dp < 0.8 || g.ad[1] / g.dp < 0.20 || g.pl[0] < 20 || g.dp < 20))
-         """, keep = False)```
+         """, keep = False)
+```         
 
 Hail semantics:
 g.isHomRef, FORMAT/GT == '0/0'
