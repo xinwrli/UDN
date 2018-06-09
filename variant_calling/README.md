@@ -4,7 +4,7 @@ The variant QC generally follows the pipeline in ref1 and ref2.
 
 ### variant based metrics:
 1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
-2. as in "hail" api
+2. as in ["hail"](https://hail.is/docs/stable/index.html) api
 
 ```
 .filter_genotypes(
