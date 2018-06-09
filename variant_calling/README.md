@@ -20,9 +20,9 @@ as in VCF filters:
 
 Filters | FORMAT/GT | FORMAT/DP | FORMAT/GQ | FORMAT/PL | FORMAT/AD
 ---|---|---|---|---|---
-keep|=='0/0'|>20|>20|PL[0]<20|AD[0]/DP > 0.8
-keep|=='0/1'|>20|>20|PL[1]<20|AD[0]/DP > 0.2 AD[1]/DP > 0.2
-keep|=='1/1'|>20|>20|PL[2]<20|AD[1]/DP > 0.8
+keep|=='0/0'|>20|>20|PL[0]<20|AD[0]/DP>0.8
+keep|=='0/1'|>20|>20|PL[1]<20|AD[0]/DP>0.2 & AD[1]/DP>0.2
+keep|=='1/1'|>20|>20|PL[2]<20|AD[1]/DP>0.8
 
 
 ### site based metrics: 
