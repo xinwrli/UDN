@@ -4,8 +4,7 @@ The variant QC generally follows the pipeline in ref1 and ref2.
 
 ### variant based metrics:
 1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
-2. exclude FORMAT/DP < 20
-as in "hail" command
+2. as in "hail" command
 
 ```
 .filter_genotypes(
@@ -17,22 +16,14 @@ as in "hail" command
 ```         
 
 
-VCF filters:
+as in VCF filters:
 
 Filters | FORMAT/GT | FORMAT/DP | FORMAT/GQ | FORMAT/PL | FORMAT/AD
 ---|---|---|---|---|---
-keep|=='0/0'|>20|>20|pl[0]<20|AD[0]/DP > 0.8
-keep|=='0/1'|>20|>20|pl[1]<20|(AD[0]+AD[1])/DP > 0.8
-keep|=='1/1'|>20|>20|pl[2]<20|AD[1]/DP > 0.8
+keep|=='0/0'|>20|>20|PL[0]<20|AD[0]/DP > 0.8
+keep|=='0/1'|>20|>20|PL[1]<20|(AD[0]+AD[1])/DP > 0.8
+keep|=='1/1'|>20|>20|PL[2]<20|AD[1]/DP > 0.8
 
-
-g.isHomRef | FORMAT/GT == '0/0'
-g.isHomVar | FORMAT/GT == '1/1'
-g.isHet | FORMAT/GT == '0/1'
-g.ad | FORMAT/AD
-g.gq | FORMAT/GQ
-g.dp | FORMAT/DP
-g.pl | FORMAT/PL
 
 ### site based metrics: 
 3. exclude variants with HWE p-value < 1e-6
