@@ -16,14 +16,15 @@ as in "hail" command
          """, keep = False)
 ```         
 
-Hail semantics in VCF fields:
-* g.isHomRef: FORMAT/GT == '0/0'
-* g.isHomVar: FORMAT/GT == '1/1'
-* g.isHet: FORMAT/GT == '0/1'
-* g.ad: FORMAT/AD
-* g.gq: FORMAT/GQ
-* g.dp: FORMAT/DP
-* g.pl: FORMAT/PL
+Hail semantics | VCF fields
+---|---
+g.isHomRef | FORMAT/GT == '0/0'
+g.isHomVar | FORMAT/GT == '1/1'
+g.isHet | FORMAT/GT == '0/1'
+g.ad | FORMAT/AD
+g.gq | FORMAT/GQ
+g.dp | FORMAT/DP
+g.pl | FORMAT/PL
 
 ### site based metrics: 
 3. exclude variants with HWE p-value < 1e-6
