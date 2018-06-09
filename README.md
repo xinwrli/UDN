@@ -1,4 +1,4 @@
-# udn, river score summary
+# udn / river score summary
 
 
 ## 1.	Description of the RIVER model.
