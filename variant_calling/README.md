@@ -16,8 +16,13 @@ as in "hail" command
          """, keep = False)
 ```         
 
-Hail semantics | VCF fields
----|---
+VCF filters
+Filters | FORMAT/GT | FORMAT/DP | FORMAT/GQ | FORMAT/PL | FORMAT/AD
+---|---|---|---
+keep|=='0/0'|>20|>20|<20|AD[0]/DP > 0.8
+
+
+
 g.isHomRef | FORMAT/GT == '0/0'
 g.isHomVar | FORMAT/GT == '1/1'
 g.isHet | FORMAT/GT == '0/1'
