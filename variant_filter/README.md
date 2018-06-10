@@ -3,8 +3,8 @@
 The variant QC generally follows the guideline in [ref1](https://doi.org/10.1016/j.ajhg.2018.05.002) and [ref2](https://doi.org/10.1038/nature19057).
 
 ### variant based metrics:
-1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
-2. as in ["hail"](https://hail.is/docs/stable/index.html) api
+#### 1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
+#### 2. as in ["hail"](https://hail.is/docs/stable/index.html) api
 
 ```
 .filter_genotypes(
@@ -24,11 +24,29 @@ keep|=='0/0'|>20|>20|PL[0]<20|AD[0]/DP>0.8
 keep|=='0/1'|>20|>20|PL[1]<20|AD[0]/DP>0.2 & AD[1]/DP>0.2
 keep|=='1/1'|>20|>20|PL[2]<20|AD[1]/DP>0.8
 
-notes: PL = *-10\*log10(likelihood)*;  
+notes: 
+PL = *-10\*log10(likelihood)*;  
+FORMAT information is different from different samples/institutions, cannot apply uniform filters
+* CGS	GT:AD:DP:GQ:PL
+* CGS	GT:GQ:PL
+* CHEO	GT
+* CHEO	GT:AD:DP:GQ:PL
+* CHEO	GT:GQ:PL
+* CHEO	GT:PL
+* CHEO	GT:PL:DP:SP:GQ
+* UDN	GT:AD
+* UDN	GT:AD:DP
+* UDN	GT:AD:DP:GQ:PGT:PID:PL
+* UDN	GT:AD:DP:GQ:PL
+* UDN	GT:AD:DP:PGT:PID
+* UDN	GT:AD:GQ:PGT:PID:PL
+* UDN	GT:AD:GQ:PL
+* UDN	GT:AD:PGT:PID
+* UDN	GT:VR:RR:DP:GQ
 
 ### site based metrics: 
-3. exclude variants with HWE p-value < 1e-6
-4. exclude varriants with call rate < 0.80 (missing > 20%)
+#### 3. exclude variants with HWE p-value < 1e-6
+#### 4. exclude varriants with call rate < 0.80 (missing > 20%)
 
 [ref1](https://doi.org/10.1016/j.ajhg.2018.05.002) Ganna, A., Satterstrom, F. K., Zekavat, S. M., Das, I., Kurki, M. I., Churchhouse, C., … Neale, B. M. (2018). Quantifying the Impact of Rare and Ultra-rare Coding Variation across the Phenotypic Spectrum. American Journal of Human Genetics, 102(6), 1204–1211.  https://github.com/andgan/ultra_rare_pheno_spectrum
 
