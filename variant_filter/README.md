@@ -26,7 +26,7 @@ keep|=='1/1'|>20|>20|PL[2]<20|AD[1]/DP>0.8
 
 notes: 
 PL = *-10\*log10(likelihood)*;  
-FORMAT information is different from different samples/institutions, cannot apply uniform filters
+FORMAT information is different across sits/samples/institutions, cannot apply uniform filters
 * CGS	GT:AD:DP:GQ:PL
 * CGS	GT:GQ:PL
 * CHEO	GT
