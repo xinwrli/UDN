@@ -24,6 +24,7 @@ keep|=='0/0'|>20|>20|PL[0]<20|AD[0]/DP>0.8
 keep|=='0/1'|>20|>20|PL[1]<20|AD[0]/DP>0.2 & AD[1]/DP>0.2
 keep|=='1/1'|>20|>20|PL[2]<20|AD[1]/DP>0.8
 
+notes: PL = *-10\*log10(likelihood)*;  
 
 ### site based metrics: 
 3. exclude variants with HWE p-value < 1e-6
