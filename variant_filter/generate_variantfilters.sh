@@ -6,12 +6,10 @@
 # bcftools does not work on UDN vcfs, format not correct
 
 parse_vcf_cmd=~/projects/udn/variant_filter/parse_1sample_vcf.sh
-output_filter=~/projects/udn/variant_filter/vcf_combined/filter_byind/
+output_filter=~/projects/udn/variant_filter/vcf_processed/filter_byind/
 convert_contig=~/projects/tablejoin/contig/convert_contig.sh
 
 instns=("CGS" "CHEO" "UDN")
-
-
 
 
 date > ${output_filter}/udn_filter_FORMAT.txt

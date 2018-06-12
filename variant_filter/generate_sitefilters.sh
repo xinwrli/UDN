@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-vcf_combined=~/projects/udn/variant_filter/vcf_combined
+vcf_combined=~/projects/udn/variant_filter/vcf_processed
 
 
 vcftools --gzvcf ${vcf_combined}/all_homogenized_short.vcf.gz --missing-site --stdout | bgzip > ${vcf_combined}/udn_vcf_missing.txt.gz
@@ -16,12 +16,12 @@ bedtools intersect -a <(vcftools --gzvcf vcf_combined/all_homogenized_short.vcf.
 	-wa -wb -loj -f 1
 skipped
 
-# tbljoin can only use lower case column names
+# tbljoin converts all to lower case column names
 tbljoin -k"chr","pos" \
 	-lr \
-	vcf_combined/udn_vcf_missing.txt.gz \
-	vcf_combined/udn_vcf_hwe.txt.gz \
-	| awk 'BEGIN{OFS="\t"}{print $1,$2,$6,$10;}' > vcf_combined/udn_site_filters.txt
+	${vcf_combined}/udn_vcf_missing.txt.gz \
+	${vcf_combined}/udn_vcf_hwe.txt.gz \
+	| awk 'BEGIN{OFS="\t"}{print $1,$2,$6,$10;}' > ${vcf_combined}/udn_site_filters.txt
 
 
 rm ${vcf_combined}/udn_vcf_missing.txt.gz
