@@ -5,7 +5,7 @@ The variant QC generally follows the ExAC guideline as in [ref1](https://doi.org
 ### variant based metrics:
 #### 1. keep only "PASS" variants, determined by the GATK variant quality score recalibration (VQSR)
 
-for non-GATK processed vcfs, keep "." or "num prev seen samples > 30"
+adhoc filter for non-GATK processed vcfs: keep "." or "num prev seen samples > 30"
 
 #### 2. as in ["hail"](https://hail.is/docs/stable/index.html) api
 
