@@ -82,6 +82,8 @@ echo "\
 cat ${RAREVARDIR}/data/indiv/${ID}.$count_ind.rvsites.txt | python ${extract_score} -n $count_ind --id $ID --af_in ${AF_FILE} --wgs_in ${FILTERED_VCF} --anno_in ${VEP_ANNOTATION} --cadd_in ${CADD_SNP} --cadd_indel_in ${CADD_INDEL}  --dann_in ${DANN_ANNOTATION} --chromHMM_in ${CHROMHMM} --phylop_in ${PHYLOP} --score_out ${RAREVARDIR}/data/score/${ID}.${count_ind}.score.nuc.txt"
 done
 
-
-
+# combine results
+<<skipped
+realpath ${RAREVARDIR}/data/score/*.score.nuc.txt | xargs tblcat > udn.score.nuc.txt
+skipped
 
