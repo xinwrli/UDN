@@ -1,1 +1,0 @@
-PB0138.1 sequence contains in-valid [^acgtACGT] characters:	NGAATTCTCAGTAAC at /srv/scratch/xli6/tools/ensembl-vep/Bio/EnsEMBL/Funcgen/BindingMatrix.pm line 369, <$fh> line 21103467.
