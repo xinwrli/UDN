@@ -21,6 +21,10 @@ vcf_file=$1
 # UDN	GT:AD:GQ:PL
 # UDN	GT:AD:PGT:PID
 # UDN	GT:VR:RR:DP:GQ
+# UDN	GT:AD:AF:DP:GQ:PL:GL:GP:PRI:SB:MB
+# UDN	SM:CN:BC
+
+
 
 # AD field cannot be normed by bcftools norm --multiallelics -any
 # need to process manually
@@ -59,10 +63,11 @@ if [[ ${vcf_file} =~ (RD[0-9]+).vcf.gz ]]; then
 			bitGQ = (GQ == "NA" || GQ == "." || GQ >= 20); \
 			bitDP = (DP == "NA" || DP == "." || DP >= 20); \
 			bitPL = (PL[1] == "NA" || PL[2] < 20); \
+			bitGT = (GT != "NA"); \
 			if( AD[1] == "NA" || DP == "NA" || DP == 0 ){bitAD = 1}else{ \
 				if( H1 == H2 ){bitAD = (AD[2]/DP > 0.8)}else{ \
 					bitAD = (AD[2]/DP > 0.2 && AD[3]/DP > 0.2 && (AD[2]+AD[3])/DP > 0.8) }}\
-			if( bitF && bitGQ && bitDP && bitPL && bitAD ){flag = "PASS";}else{flag = "FAIL";}\
+			if( bitF && bitGQ && bitDP && bitPL && bitAD && bitGT ){flag = "PASS";}else{flag = "FAIL";}\
 			print ID,$1,$2,$3,$4,$5,$6,FT, \
                 	GT,DP,GQ,PL[1],PL[2],AD[1],AD[2],AD[3],H1":"H1a,H2":"H2a,flag;}'
 fi
