@@ -40,7 +40,7 @@ IND_LIST=$(vcf-query -l ${WGS_VCF_FILE})
 
 extract_rvsite=~/projects/rv_annotation/extract_rvsites_ByInd.py
 extract_score=~/projects/rv_annotation/extract_scores_combined.py
-
+python=/usr/bin/python2.7
 
 # vcf already filtered this step skipped
 #### [step 2]
@@ -68,22 +68,27 @@ for ID in ${IND_LIST}
 do
 count_ind=$(( $count_ind + 1 ))
 echo "\
-cat ${GENE_REGION} | python ${extract_rvsite} -n $count_ind --id $ID --WGSvcf_in ${FILTERED_VCF} --AFvcf_in ${AF_FILE} --AFpop_in ${AF_1KG} --AFcutoff 0.02 --site_out ${RAREVARDIR}/data/indiv/${ID}.${count_ind}.rvsites.txt"
+cat ${GENE_REGION} | ${python} ${extract_rvsite} -n $count_ind --id $ID --WGSvcf_in ${FILTERED_VCF} --AFvcf_in ${AF_FILE} --AFpop_in ${AF_1KG} --AFcutoff 0.02 --site_out ${RAREVARDIR}/data/indiv/${ID}.${count_ind}.rvsites.txt"
 done
 skipped
 
 
 #### [Step 6] Extract all the features simulataneously (CADD, chromHMM, phylop, DANN).
+
 count_ind=0
 for ID in ${IND_LIST}
 do
 count_ind=$(( $count_ind + 1))
 echo "\
-cat ${RAREVARDIR}/data/indiv/${ID}.$count_ind.rvsites.txt | python ${extract_score} -n $count_ind --id $ID --af_in ${AF_FILE} --wgs_in ${FILTERED_VCF} --anno_in ${VEP_ANNOTATION} --cadd_in ${CADD_SNP} --cadd_indel_in ${CADD_INDEL}  --dann_in ${DANN_ANNOTATION} --chromHMM_in ${CHROMHMM} --phylop_in ${PHYLOP} --score_out ${RAREVARDIR}/data/score/${ID}.${count_ind}.score.nuc.txt"
+cat ${RAREVARDIR}/data/indiv/${ID}.$count_ind.rvsites.txt | ${python} ${extract_score} -n $count_ind --id $ID --af_in ${AF_FILE} --wgs_in ${FILTERED_VCF} --anno_in ${VEP_ANNOTATION} --cadd_in ${CADD_SNP} --cadd_indel_in ${CADD_INDEL}  --dann_in ${DANN_ANNOTATION} --chromHMM_in ${CHROMHMM} --phylop_in ${PHYLOP} --score_out ${RAREVARDIR}/data/score/${ID}.${count_ind}.score.nuc.txt"
 done
+
 
 # combine results
 <<skipped
 realpath ${RAREVARDIR}/data/score/*.score.nuc.txt | xargs tblcat > udn.score.nuc.txt
 skipped
+
+
+
 
