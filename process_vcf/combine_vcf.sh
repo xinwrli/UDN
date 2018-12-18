@@ -13,6 +13,9 @@ short_format=vcf_filtered/vcf_filtered_homogenized/short_format/*.vcf.gz
 filtered_file3=vcf_filtered/vcf_processed/pilot_run1-2/filter_byind/*.filtered.vcf.gz
 # 3. create temp folder filter RD221 individually
 filtered_file2=${vcf_combined}/temp_filtered/*homogenized_short*.vcf.gz
+# 4. raw vcfs
+
+
 
 combine_vcf_filtered="ls ${short_format} | xargs vcf-merge | bgzip -c > ${vcf_combined}/udn_homogenized_short.vcf.gz"
 combine_vcf_filtered="ls ${filtered_file3} | xargs vcf-merge | bgzip -c > ${vcf_combined}/udn_homogenized_short.vcf.gz"
@@ -22,7 +25,7 @@ combine_vcf_filtered="ls ${filtered_file2} | xargs vcf-merge | bgzip -c > ${vcf_
 extract_id="{ ls vcf_all/CGS/*_homogenized_short.vcf.gz; ls vcf_all/UDN/*_homogenized_short.vcf.gz; ls vcf_all/CHEO/*_homogenized_short.vcf.gz; } | xargs nohup vcf-merge | nohup bcftools query --list-samples | sort > udn_vcfid.txt"
 
 # fill in 0/0 for calculation of allele frequency
-combine_vcf_fill="{ ls vcf_all/CGS/*_homogenized_short.vcf.gz; ls vcf_all/UDN/*_homogenized_short.vcf.gz; ls vcf_all/CHEO/*_homogenized_short.vcf.gz; } | xargs nohup vcf-merge --ref-for-missing 0/0 | nohup vcftools --vcf - --freq --stdout | bgzip -c > ${vcf_combined}/udn_homogenized_short.vcf.frq.gz"
+combine_vcf_fill="{ ls vcf_all/CGS/*_homogenized_short.vcf.gz; ls vcf_all/UDN/*_homogenized_short.vcf.gz; ls vcf_all/CHEO/*_homogenized_short.vcf.gz; } | xargs vcf-merge --ref-for-missing 0/0 | vcftools --vcf - --freq --stdout | bgzip -c > ${vcf_combined}/udn_homogenized_short.vcf.frq.gz"
 
 
 # combine_vcf_fill="{ ls vcf_all/CGS/*_homogenized_short.vcf.gz; ls vcf_all/UDN/*_homogenized_short.vcf.gz; ls vcf_all/CHEO/*_homogenized_short.vcf.gz; } | xargs nohup vcf-merge --ref-for-missing 0/0 | bgzip -c > ${vcf_combined}/udn_homogenized_short_filmisw00.vcf.gz"

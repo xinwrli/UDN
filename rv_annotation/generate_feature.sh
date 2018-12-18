@@ -74,7 +74,6 @@ skipped
 
 
 #### [Step 6] Extract all the features simulataneously (CADD, chromHMM, phylop, DANN).
-
 count_ind=0
 for ID in ${IND_LIST}
 do
