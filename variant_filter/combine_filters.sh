@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# do not apply site filters,
+# 
+
 variant_filter=~/projects/udn/variant_filter/vcf_processed/filter_byind/
 site_filter=~/projects/udn/variant_filter/vcf_processed/udn_site_filters.txt
 temp_site=~/projects/udn/variant_filter/vcf_processed/temp_site.txt

@@ -6,9 +6,10 @@ filtered_file=$3
 
 temp_file=${site_filter}"_temp"
 
+
 tblmap -k"chr,pos,id,ref,alt,chr_numeric,vflag,chr.1,f_miss,p_hwe" ${site_filter} | \
 	awk -F"\t" 'BEGIN{OFS="\t"}{ \
-		fail=$7=="FAIL" || $9 > 0.2 || $10 < 1e-6; \
+		fail=$7=="FAIL" || ($9 != "NA" && $9 > 0.2) || ($10 != "NA" && $10 < 1e-6); \
 		if(fail){print $1,$2} \
 		}' > ${temp_file}
 
